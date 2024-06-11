@@ -69,15 +69,14 @@ app.post("/nodemail", async (req, res) => {
           style="width: 150px; height: 150px; margin-right: 20px"
         />
         <div style="flex: 1; text-align: right">
-        <h3 style="margin: 0">Package Name: ${product.name}</h3>
-           <p style="margin: 0">Package Description: ${product.description}</p>
+        <h3 style="margin: 0">${product.name}</h3>
+           <p style="margin: 0">${product.description}</p>
           <p style="margin: 5px 0">Participant Name: ${product.participantName}</p>
           <p style="margin: 5px 0">Participant Grade: ${product.participantGrade}</p>
           <p style="margin: 5px 0">Price: $${product.price}</p>
-          <p style="margin: 5px 0">Jersey Size: ${product.jerseySize}</p>
-          <p style="margin: 5px 0">Jersey Short Size: ${product.jerseyShortSize}</p>
-          <p style="margin: 5px 0">Shirt Size: ${product.shirtSize}</p>
-          <p style="margin: 5px 0">Short Size: ${product.shortSize}</p>
+          <p style="margin: 5px 0">${product.gradClass}, ${product.school}</p>
+          <p style="margin: 5px 0">IG: ${product.IGHandle}, Twitter: ${product.twitterHandle}, TikTok: ${product.tiktokHandle}</p>
+          <p style="margin: 5px 0">${product.parentName}, ${product.parentEmail}, ${product.parentPhone}</p>
         </div>
       </div>
     `;
@@ -134,7 +133,7 @@ app.post("/nodemail", async (req, res) => {
           style="width: 150px; height: 150px; margin-right: 20px"
         />
         <div style="flex: 1; text-align: right">
-          <h3 style="margin: 0">Product Name: ${product.name}</h3>
+          <h3 style="margin: 0">${product.name}</h3>
            <p style="margin: 0">Quantity: ${product.quantity}</p>
           <p style="margin: 5px 0">Price: $${product.price}</p>
           <p style="margin: 5px 0">Size: ${product.size}</p>
@@ -145,7 +144,7 @@ app.post("/nodemail", async (req, res) => {
   });
   const options = {
     from: "Reps on Reps <repsonrepsapp@gmail.com>",
-    to: email,
+    to: [email, "repsonrepsapp@gmail.com"],
     subject: "Reps on Reps Order Confirmation for " + name,
     html:
       `<div
@@ -206,3 +205,4 @@ app.post("/newsletter", async (req, res) => {
 });
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
